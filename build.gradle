@@ -1,0 +1,75 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.cloud.tools:appengine-gradle-plugin:+'    // latest App Engine Gradle tasks
+        classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:+'
+        classpath 'com.google.endpoints:endpoints-framework-tools:2.0.0'
+    }
+}
+
+repositories {
+    maven {
+        url 'https://maven-central.storage.googleapis.com'
+    }
+    jcenter()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'com.google.cloud.tools.endpoints-framework-server'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+dependencies {
+    providedCompile 'javax.servlet:servlet-api:2.5'
+    compile 'com.google.appengine:appengine:+'
+    compile 'commons-lang:commons-lang:2.6'
+    compile 'javax.inject:javax.inject:1'
+    compile 'com.google.endpoints:endpoints-framework:2.0.0'
+    compile 'com.google.endpoints:endpoints-framework-tools:2.0.0'
+    compile 'com.google.endpoints:endpoints-framework-auth:1.0.0'
+    compile 'com.google.endpoints:endpoints-framework-guice:2.0.0'
+}
+
+appengine {  // App Engine tasks configuration
+
+    run {      // local (dev_appserver) configuration (standard environments only)
+        port = 8080                 // default
+    }
+
+    deploy {   // deploy configuration
+        stopPreviousVersion = true  // default - stop the current version
+        promote = true              // default - & make this the current version
+    }
+
+    def cloudSdkDir = null
+    try {
+        project.rootProject.file('local.properties').withInputStream {
+            Properties properties = new Properties()
+            properties.load(it)
+            cloudSdkDir = properties.'cloudSdk.dir'
+        }
+        if (cloudSdkDir) {
+            tools.cloudSdkHome = [cloudSdkDir]
+        }
+    } catch (Exception ignore) {
+    }
+
+}
+
+endpointsServer {
+    serviceClasses = ['org.somecompany.api.DemoEndpoint']
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
+group 'org.somecompany.api'
+version '1.0-SNAPSHOT'
+
