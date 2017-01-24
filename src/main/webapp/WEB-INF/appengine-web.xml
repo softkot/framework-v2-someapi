@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+    <threadsafe>true</threadsafe>
+    <service>framework-v2-someapi</service>
+    <instance-class>F1</instance-class>
+
+    <automatic-scaling>
+        <max-concurrent-requests>10</max-concurrent-requests>
+        <max-idle-instances>1</max-idle-instances>
+    </automatic-scaling>
+
+    <precompilation-enabled>true</precompilation-enabled>
+    <sessions-enabled>false</sessions-enabled>
+
+    <static-files>
+        <include expiration="0m" path="/docs/**"/>
+        <include expiration="0m" path="/_ah/spi/**"/>
+    </static-files>
+
+    <warmup-requests-enabled>true</warmup-requests-enabled>
+
+    <inbound-services>
+        <service>warmup</service>
+    </inbound-services>
+
+    <system-properties>
+    </system-properties>
+
+    <env-variables>
+        <env-var name="DEFAULT_ENCODING" value="UTF-8" />
+    </env-variables>
+</appengine-web-app>
