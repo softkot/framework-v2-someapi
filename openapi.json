@@ -1,0 +1,84 @@
+{
+ "swagger": "2.0",
+ "info": {
+  "version": "1.0.0",
+  "title": "someapi.endpoints.soft-lynx.cloud.goog"
+ },
+ "host": "someapi.endpoints.soft-lynx.cloud.goog",
+ "basePath": "/_ah/api",
+ "schemes": [
+  "https"
+ ],
+ "consumes": [
+  "application/json"
+ ],
+ "produces": [
+  "application/json"
+ ],
+ "paths": {
+  "/someapi/v1/method/getHash": {
+   "get": {
+    "operationId": "SomeapiGetHash",
+    "parameters": [ ],
+    "responses": {
+     "200": {
+      "description": "A successful response",
+      "schema": {
+       "$ref": "#/definitions/JsonMap"
+      }
+     }
+    },
+    "security": [
+     {
+      "google_id_token": [ ]
+     },
+     {
+      "google_id_token_https": [ ]
+     }
+    ],
+    "x-security": [
+     {
+      "google_id_token": {
+       "audiences": [
+        "81083810932-c4l6olrfn65n9lqsvnl0diuh0gk3i9i0.apps.googleusercontent.com"
+       ]
+      }
+     },
+     {
+      "google_id_token_https": {
+       "audiences": [
+        "81083810932-c4l6olrfn65n9lqsvnl0diuh0gk3i9i0.apps.googleusercontent.com"
+       ]
+      }
+     }
+    ]
+   }
+  }
+ },
+ "securityDefinitions": {
+  "google_id_token_https": {
+   "type": "oauth2",
+   "authorizationUrl": "",
+   "flow": "implicit",
+   "x-issuer": "https://accounts.google.com",
+   "x-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs"
+  },
+  "google_id_token": {
+   "type": "oauth2",
+   "authorizationUrl": "",
+   "flow": "implicit",
+   "x-issuer": "accounts.google.com",
+   "x-jwks_uri": "https://www.googleapis.com/oauth2/v1/certs"
+  },
+  "firebase": {
+   "type": "oauth2",
+   "authorizationUrl": "",
+   "flow": "implicit",
+   "x-issuer": "https://securetoken.google.com/soft-lynx",
+   "x-jwks_uri": "https://www.googleapis.com/robot/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+  }
+ },
+ "definitions": {
+  "JsonMap": { }
+ }
+}

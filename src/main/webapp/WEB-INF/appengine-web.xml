@@ -4,11 +4,6 @@
     <service>framework-v2-someapi</service>
     <instance-class>F1</instance-class>
 
-    <automatic-scaling>
-        <max-concurrent-requests>10</max-concurrent-requests>
-        <max-idle-instances>1</max-idle-instances>
-    </automatic-scaling>
-
     <precompilation-enabled>true</precompilation-enabled>
     <sessions-enabled>false</sessions-enabled>
 
@@ -27,6 +22,7 @@
     </system-properties>
 
     <env-variables>
-        <env-var name="DEFAULT_ENCODING" value="UTF-8" />
+        <env-var name="DEFAULT_ENCODING" value="UTF-8"/>
+        <env-var name="ENDPOINTS_SERVICE_NAME" value="someapi.endpoints.soft-lynx.cloud.goog"/>
     </env-variables>
 </appengine-web-app>

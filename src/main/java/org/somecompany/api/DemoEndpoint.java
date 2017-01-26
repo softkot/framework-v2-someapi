@@ -18,13 +18,12 @@ public class DemoEndpoint extends BaseEndpoint {
         HashMap<String, String> res = new HashMap<>();
         res.put("key1", "value1");
         res.put("key2", "value2");
+        res.put("key3", "value3");
         if (user != null) {
             res.put("user", user.getEmail());
         }
         return res;
-
     }
-
 }
 
 

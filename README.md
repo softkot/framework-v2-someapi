@@ -8,7 +8,7 @@ Change each PROJECT_ID value mentioned below to the real AppEngine project id yo
 ## Steps to demonstrate
 1. edit appengine-web.xml in case wish to change default appengine service name (framework-v2-someapi) and change that name on step 5 as well.  
 1. gcloud auth login
-1. gcloud config set project PROJECT_ID
+1. gcloud config set project PROJECT_ID 
 1. ./gradlew appengineDeploy 
 1. gcloud app browse -s framework-v2-someapi
 1. Click API link in new opened browser window.
