@@ -30,13 +30,16 @@ targetCompatibility = 1.7
 dependencies {
     providedCompile 'javax.servlet:servlet-api:2.5'
     providedCompile 'com.google.appengine:appengine:+'
-    compile 'commons-lang:commons-lang:2.6'
     compile 'javax.inject:javax.inject:1'
-    compile 'com.google.endpoints:endpoints-framework:2.0.0'
-    compile 'com.google.endpoints:endpoints-management-control-appengine:1.0.0'
-    compile 'com.google.endpoints:endpoints-framework-tools:2.0.0'
-    compile 'com.google.endpoints:endpoints-framework-auth:1.0.0'
-    compile 'com.google.endpoints:endpoints-framework-guice:2.0.0'
+    compile 'com.google.endpoints:endpoints-framework:+'
+/*
+    compile 'com.google.endpoints:endpoints-management-control:+'
+    compile 'com.google.endpoints:endpoints-management-config:+'
+    compile 'com.google.endpoints:endpoints-management-auth:+'
+    compile 'com.google.endpoints:endpoints-management-control-appengine:+'
+    compile 'com.google.endpoints:endpoints-framework-auth:+'
+*/
+    compile 'com.google.endpoints:endpoints-framework-guice:+'
 }
 
 appengine {  // App Engine tasks configuration
@@ -63,9 +66,11 @@ appengine {  // App Engine tasks configuration
 
 }
 
+
 endpointsServer {
     serviceClasses = ['org.somecompany.api.DemoEndpoint']
 }
+
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.3'
@@ -75,14 +80,12 @@ version '1.0-SNAPSHOT'
 
 task getSwaggerDocs(type: JavaExec) {
     dependsOn explodeWar
-    classpath = configurations.compile
+    classpath = buildscript.configurations.classpath
     main = "com.google.api.server.spi.tools.EndpointsTool"
     args = [
             "get-swagger-doc",
             "--hostname=someapi.endpoints.soft-lynx.cloud.goog",
-            "--war=build/exploded-app",
-            "org.somecompany.api.DemoEndpoint"
-    ]
+            "--war=build/exploded-app"] + endpointsServer.serviceClasses
 }
 
 task deployEndpoint(type: Exec) {

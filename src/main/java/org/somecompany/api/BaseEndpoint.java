@@ -23,5 +23,4 @@ import com.google.api.server.spi.config.ApiNamespace;
 )
 // [END someapiapi_annotation]
 public class BaseEndpoint {
-
 }
