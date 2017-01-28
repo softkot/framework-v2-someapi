@@ -48,32 +48,35 @@
     </listener>
 
     <!--
-        <filter>
-            <filter-name>endpoints-api-configuration</filter-name>
-            <filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class>
-        </filter>
+// Does not work with local dev_appserver
 
-        <filter>
-            <filter-name>endpoints-api-controller</filter-name>
-            <filter-class>com.google.api.control.extensions.appengine.GoogleAppEngineControlFilter</filter-class>
-            <init-param>
-                <param-name>endpoints.projectId</param-name>
-                <param-value>soft-lynx</param-value>
-            </init-param>
-            <init-param>
-                <param-name>endpoints.serviceName</param-name>
-                <param-value>someapi.endpoints.soft-lynx.cloud.goog</param-value>
-            </init-param>
-        </filter>
+    <filter>
+        <filter-name>endpoints-api-configuration</filter-name>
+        <filter-class>com.google.api.control.ServiceManagementConfigFilter</filter-class>
+    </filter>
 
-        <filter-mapping>
-            <filter-name>endpoints-api-configuration</filter-name>
-            <url-pattern>/_ah/api/*</url-pattern>
-        </filter-mapping>
+    <filter>
+        <filter-name>endpoints-api-controller</filter-name>
+        <filter-class>com.google.api.control.extensions.appengine.GoogleAppEngineControlFilter</filter-class>
+        <init-param>
+            <param-name>endpoints.projectId</param-name>
+            <param-value>soft-lynx</param-value>
+        </init-param>
+        <init-param>
+            <param-name>endpoints.serviceName</param-name>
+            <param-value>someapi.endpoints.soft-lynx.cloud.goog</param-value>
+        </init-param>
+    </filter>
 
-        <filter-mapping>
-            <filter-name>endpoints-api-controller</filter-name>
-            <url-pattern>/_ah/api/*</url-pattern>
-        </filter-mapping>
-    -->
+    <filter-mapping>
+        <filter-name>endpoints-api-configuration</filter-name>
+        <url-pattern>/_ah/api/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>endpoints-api-controller</filter-name>
+        <url-pattern>/_ah/api/*</url-pattern>
+    </filter-mapping>
+-->
+
 </web-app>

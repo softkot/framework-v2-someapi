@@ -37,8 +37,8 @@ dependencies {
     compile 'com.google.endpoints:endpoints-management-config:+'
     compile 'com.google.endpoints:endpoints-management-auth:+'
     compile 'com.google.endpoints:endpoints-management-control-appengine:+'
-    compile 'com.google.endpoints:endpoints-framework-auth:+'
 */
+    compile 'com.google.endpoints:endpoints-framework-auth:+'
     compile 'com.google.endpoints:endpoints-framework-guice:+'
 }
 

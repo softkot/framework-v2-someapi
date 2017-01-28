@@ -2,6 +2,7 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
     <threadsafe>true</threadsafe>
     <service>framework-v2-someapi</service>
+    <!--Version tag should be included in order to run with dev_appserver -->
     <version>1</version>
     <instance-class>F1</instance-class>
 
@@ -24,6 +25,6 @@
 
     <env-variables>
         <env-var name="DEFAULT_ENCODING" value="UTF-8"/>
-        <env-var name="ENDPOINTS_SERVICE_NAME" value="someapi.endpoints.soft-lynx.cloud.goog"/>
+        <!--<env-var name="ENDPOINTS_SERVICE_NAME" value="someapi.endpoints.soft-lynx.cloud.goog"/>-->
     </env-variables>
 </appengine-web-app>
